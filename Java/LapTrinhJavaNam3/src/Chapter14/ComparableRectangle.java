@@ -1,9 +1,8 @@
 package Chapter14;
+
 import Chapter11.*;
 
-class ComparableRectangle extends Rectangle implements Comparable{
-
-	
+class ComparableRectangle extends Rectangle implements Comparable, Cloneable {
 
 	public ComparableRectangle() {
 		super();
@@ -21,15 +20,27 @@ class ComparableRectangle extends Rectangle implements Comparable{
 		// TODO Auto-generated constructor stub
 	}
 
+	public static Object Max(Object o1, Object o2) {
+		if (((ComparableRectangle) o1).compareTo(o2) >= 0)
+			return o1;
+		else
+			return o2;
+	}
+
 	@Override
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
-		if(this.getArea() > ((ComparableRectangle)o).getArea())
+		if (this.getArea() > ((ComparableRectangle) o).getArea())
 			return 1;
-		else if(this.getArea() < ((ComparableRectangle)o).getArea())
+		else if (this.getArea() < ((ComparableRectangle) o).getArea())
 			return -1;
 		else
 			return 0;
 	}
-	
+
+	public Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
+	}
+
 }
