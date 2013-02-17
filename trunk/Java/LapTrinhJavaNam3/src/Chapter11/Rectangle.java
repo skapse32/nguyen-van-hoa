@@ -38,8 +38,11 @@ public class Rectangle extends GeometricObject {
 	public double getPerimeter(){
 		return (width+height)*2;
 	}
-	public void PrintRectangle(){
-		System.out.println("The Rectangle is created " + getDateCreated()
-				+ " and the infomation of it is [" + width + "," + height + "]");
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "The Rectangle is created " + getDateCreated()
+				+ " and the infomation of it is [" + width + "," + height + "]";
 	}
+	
 }
