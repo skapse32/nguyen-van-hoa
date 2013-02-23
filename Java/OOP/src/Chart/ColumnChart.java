@@ -3,6 +3,7 @@
  */
 package Chart;
 
+
 import java.applet.Applet;
 import java.awt.Graphics;
 
@@ -27,6 +28,7 @@ public class ColumnChart extends Applet {
 		// TODO Auto-generated method stub
 		super.paint(arg0);
 		myContainer.drawContainer(arg0);
+		
 	}
 	
 }
