@@ -8,6 +8,7 @@ public class Circle {
 	public Circle() {
 		super();
 		// TODO Auto-generated constructor stub
+		radius = 1.0;
 	}
 
 	public Circle(double radius) {
