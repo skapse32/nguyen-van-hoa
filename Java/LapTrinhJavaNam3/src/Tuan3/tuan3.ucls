@@ -1,39 +1,39 @@
 <class-diagram version="1.0.11" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" corner="BOTTOM_RIGHT" language="java" name="Chapter10.Circle" project="JavaTeam" 
-    file="/JavaTeam/src/Chapter10/Circle.java" binary="false">    
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="Tuan3.Circle" project="JavaTeam" 
+    file="/JavaTeam/src/Tuan3/Circle.java" binary="false">    
     <position height="-1" width="-1" x="480" y="119"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="2" corner="BOTTOM_LEFT" language="java" name="Chapter10.Cynlinder" project="JavaTeam" 
-    file="/JavaTeam/src/Chapter10/Cynlinder.java" binary="false">    
+  <class id="2" corner="BOTTOM_LEFT" language="java" name="Tuan3.Cynlinder" project="JavaTeam" 
+    file="/JavaTeam/src/Tuan3/Cynlinder.java" binary="false">    
     <position height="-1" width="-1" x="653" y="271"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="3" corner="BOTTOM_RIGHT" language="java" name="Chapter10.Shape" project="JavaTeam" 
-    file="/JavaTeam/src/Chapter10/Shape.java" binary="false">    
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="Tuan3.Shape" project="JavaTeam" 
+    file="/JavaTeam/src/Tuan3/Shape.java" binary="false">    
     <position height="129" width="106" x="145" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="4" corner="BOTTOM_RIGHT" language="java" name="Chapter10.Triangle" project="JavaTeam" 
-    file="/JavaTeam/src/Chapter10/Triangle.java" binary="false">    
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="Tuan3.Triangle" project="JavaTeam" 
+    file="/JavaTeam/src/Tuan3/Triangle.java" binary="false">    
     <position height="146" width="168" x="41" y="240"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
-  <class id="5" corner="BOTTOM_RIGHT" language="java" name="Chapter10.Rectangle" project="JavaTeam" 
-    file="/JavaTeam/src/Chapter10/Rectangle.java" binary="false">    
+  <class id="5" corner="BOTTOM_RIGHT" language="java" name="Tuan3.Rectangle" project="JavaTeam" 
+    file="/JavaTeam/src/Tuan3/Rectangle.java" binary="false">    
     <position height="146" width="178" x="249" y="240"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
