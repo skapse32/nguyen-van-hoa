@@ -1,4 +1,4 @@
-package Chapter10;
+package Tuan3;
 
 public class Triangle extends Shape {
 
