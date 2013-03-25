@@ -3,6 +3,8 @@ package com.nvh.GUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -27,9 +29,13 @@ public class FreeDrawing extends JFrame{
 	private JButton open;
 	private JButton clear;
 	private JButton exit;
+	private DrawPanel mContent;
+	private Color mColor = Color.BLACK;
 	
 	public FreeDrawing() {
 		super();
+		setSize(500,500);
+
 		//Panel chinh
 		JPanel contextPanel = new JPanel(new BorderLayout());
 		
@@ -61,9 +67,10 @@ public class FreeDrawing extends JFrame{
 		toolPanel.add(shape);
 		
 		//panel khung ve
-		JPanel mContent = new JPanel();
-		mContent.setBorder(new TitledBorder(""));
-		mContent.setBackground(Color.WHITE);
+
+
+		setVisible(true);
+		mContent = new DrawPanel();
 		
 		//panel button
 		JPanel mbutton = new JPanel(new GridLayout(1, 4, 5 ,5));
@@ -71,15 +78,56 @@ public class FreeDrawing extends JFrame{
 		mbutton.add(open = new JButton("Open"));
 		mbutton.add(clear = new JButton("Clear"));
 		mbutton.add(exit = new JButton("Exit"));
+
 		
 		contextPanel.add(mContent, BorderLayout.CENTER);
 		contextPanel.add(toolPanel,BorderLayout.EAST);
 		contextPanel.add(mbutton,BorderLayout.SOUTH);
 		
+		addListener();
 		add(contextPanel);
-		pack();
-		setVisible(true);
+		
 	}
+	
+	public void addListener(){
+		rdb_circle.addActionListener(mListener);
+		rdb_line.addActionListener(mListener);
+		rdb_rectangle.addActionListener(mListener);
+		
+		rdb_blue.addActionListener(mListenerColor);
+		rdb_red.addActionListener(mListenerColor);
+		rdb_green.addActionListener(mListenerColor);
+	}
+	
+	private ActionListener mListenerColor = new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getSource().equals(rdb_red)){
+				mColor = Color.RED;
+			}else if(e.getSource() == rdb_green){
+				mColor = Color.GREEN;	
+			}else if(e.getSource() == rdb_blue){
+				mColor = Color.BLUE;
+			}
+		}
+	};
+	
+	private ActionListener mListener = new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getSource().equals(rdb_line)){
+				mContent.pickShape(1, mColor);
+			}else if(e.getSource() == rdb_circle){
+				mContent.pickShape(2, mColor);				
+			}else if(e.getSource() == rdb_rectangle){
+				mContent.pickShape(3, mColor);
+			}
+		}
+	};
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
