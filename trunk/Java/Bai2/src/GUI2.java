@@ -50,6 +50,8 @@ public class GUI2 extends JFrame implements ActionListener {
 	private ArrayList<SinhVien> mSinhViens = new ArrayList<>();
 	private JComboBox<String> list_sort;
 	private JFileChooser fc;
+	private JLabel lbl_status;
+	private JPanel status_strip;
 
 	public GUI2() {
 		super();
@@ -65,6 +67,12 @@ public class GUI2 extends JFrame implements ActionListener {
 		// add listener
 		addListerForControls();
 
+		lbl_status = new JLabel("Khoi Dong Chuong Trinh");
+		status_strip = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		status_strip.add(lbl_status);
+		status_strip.setPreferredSize(new Dimension(800, 20));
+		add(status_strip, BorderLayout.SOUTH);		
+		
 		fc = new JFileChooser();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,9 +92,12 @@ public class GUI2 extends JFrame implements ActionListener {
 	public void disablePanelInput() {
 		// TODO Auto-generated method stub
 		if (!clickThem) {
+			txt_mssv.setText("");
 			txt_mssv.setEnabled(false);
 			txt_hoten.setEnabled(false);
+			txt_hoten.setText("");
 			comboSex.setEnabled(false);
+			txt_ntns.setText("");
 			txt_ntns.setEnabled(false);
 			btn_nhap.setEnabled(false);
 		} else {
@@ -108,7 +119,7 @@ public class GUI2 extends JFrame implements ActionListener {
 		mTableModel.addColumn("GioiTinh");
 		mTableModel.addColumn("NTNS");
 		JScrollPane mJScrollPane = new JScrollPane(mTable);
-		mJScrollPane.setPreferredSize(new Dimension(760, 600));
+		mJScrollPane.setPreferredSize(new Dimension(760, 310));
 		add(mJScrollPane);
 	}
 
@@ -176,6 +187,7 @@ public class GUI2 extends JFrame implements ActionListener {
 		if (source.equals(btn_them)) {
 			clickThem = true;
 			disablePanelInput();
+			lbl_status.setText("Clicked Button Them");
 		} else if (source.equals(btn_nhap)) {
 			clickThem = false;
 			SinhVien mSinhVien = new SinhVien(txt_mssv.getText(),
@@ -184,17 +196,20 @@ public class GUI2 extends JFrame implements ActionListener {
 			mSinhViens.add(mSinhVien);
 			addRowTalbe(mSinhVien);
 			disablePanelInput();
-
+			lbl_status.setText("Clicked Button Nhap");
 		} else if (source.equals(btn_sapxep)) {
 			if (list_sort.getSelectedIndex() == 0) {
 				Collections.sort(mSinhViens, new MssvComperator());
 				refreshTable();
+				lbl_status.setText("Sap xep theo MSSV");
 			} else if (list_sort.getSelectedIndex() == 1) {
 				Collections.sort(mSinhViens, new HoTenComperator());
 				refreshTable();
+				lbl_status.setText("Sap xep theo Ho Ten");
 			} else {
 				Collections.sort(mSinhViens, new NTNSComperator());
 				refreshTable();
+				lbl_status.setText("Sap xep theo NTNS");
 			}
 		} else if (source.equals(btn_save)) {
 			
@@ -207,6 +222,7 @@ public class GUI2 extends JFrame implements ActionListener {
 					os.writeObject(mSinhViens);
 					os.flush();
 					os.close();
+					lbl_status.setText("Saved");
 				} catch (Exception e2) {
 					// TODO: handle exception
 					e2.printStackTrace();
@@ -222,14 +238,20 @@ public class GUI2 extends JFrame implements ActionListener {
 					mSinhViens = (ArrayList<SinhVien>)ois.readObject();
 					ois.close();
 					refreshTable();
+					lbl_status.setText("Loaded");
 				} catch (Exception e2) {
 					e2.printStackTrace();
 				}
 			}
 		} else if (source.equals(btn_xoa)) {
-			int c = mTable.getSelectedRowCount();
-			mSinhViens.remove(c-1);
+			int[] index = mTable.getSelectedRows();
+			StringBuilder mBuilder = new StringBuilder();
+			for (int i : index) {
+				mBuilder.append(i + ",");
+				mSinhViens.remove(i);	
+			}
 			refreshTable();
+			lbl_status.setText("Xoa cac dong : " + mBuilder.toString());
 		}
 	}
 
