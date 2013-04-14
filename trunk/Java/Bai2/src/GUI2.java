@@ -220,7 +220,6 @@ public class GUI2 extends JFrame implements ActionListener {
 					ObjectInputStream ois = new ObjectInputStream(
 							new BufferedInputStream(new FileInputStream(f)));
 					mSinhViens = (ArrayList<SinhVien>)ois.readObject();
-					System.out.println(mSinhViens);
 					ois.close();
 					refreshTable();
 				} catch (Exception e2) {
@@ -229,7 +228,7 @@ public class GUI2 extends JFrame implements ActionListener {
 			}
 		} else if (source.equals(btn_xoa)) {
 			int c = mTable.getSelectedRowCount();
-			mSinhViens.remove(c);
+			mSinhViens.remove(c-1);
 			refreshTable();
 		}
 	}
