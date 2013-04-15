@@ -17,6 +17,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.TreeSet;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -47,7 +49,7 @@ public class GUI2 extends JFrame implements ActionListener {
 	private JButton btn_load;
 	private JTable mTable;
 	private Boolean clickThem = false;
-	private ArrayList<SinhVien> mSinhViens = new ArrayList<>();
+	private TreeSet<SinhVien> mSinhViens = new TreeSet<SinhVien>();
 	private JComboBox<String> list_sort;
 	private JFileChooser fc;
 	private JLabel lbl_status;
@@ -193,21 +195,31 @@ public class GUI2 extends JFrame implements ActionListener {
 			SinhVien mSinhVien = new SinhVien(txt_mssv.getText(),
 					txt_hoten.getText(), (String) comboSex.getSelectedItem(),
 					(Date) txt_ntns.getValue());
+			if(mSinhViens.contains(mSinhVien)){
+				JOptionPane.showMessageDialog(null, "Không thể lưu 2 sinh viên có cùng MSSV","Lỗi nhập dữ liệu",JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			mSinhViens.add(mSinhVien);
-			addRowTalbe(mSinhVien);
+			refreshTable();
 			disablePanelInput();
 			lbl_status.setText("Clicked Button Nhap");
 		} else if (source.equals(btn_sapxep)) {
-			if (list_sort.getSelectedIndex() == 0) {
-				Collections.sort(mSinhViens, new MssvComperator());
+			if (list_sort.getSelectedIndex() == 0) { // sap xep theo MSSV
+				TreeSet<SinhVien> temp = new TreeSet<SinhVien>(new MssvComperator());
+				temp.addAll(mSinhViens);
+				mSinhViens = temp;
 				refreshTable();
 				lbl_status.setText("Sap xep theo MSSV");
-			} else if (list_sort.getSelectedIndex() == 1) {
-				Collections.sort(mSinhViens, new HoTenComperator());
+			} else if (list_sort.getSelectedIndex() == 1) { // sap xep theo Ho Ten
+				TreeSet<SinhVien> temp = new TreeSet<SinhVien>(new HoTenComperator());
+				temp.addAll(mSinhViens);
+				mSinhViens = temp;
 				refreshTable();
 				lbl_status.setText("Sap xep theo Ho Ten");
 			} else {
-				Collections.sort(mSinhViens, new NTNSComperator());
+				TreeSet<SinhVien> temp = new TreeSet<SinhVien>(new NTNSComperator());
+				temp.addAll(mSinhViens);
+				mSinhViens = temp;
 				refreshTable();
 				lbl_status.setText("Sap xep theo NTNS");
 			}
@@ -235,7 +247,7 @@ public class GUI2 extends JFrame implements ActionListener {
 					File f = fc.getSelectedFile();
 					ObjectInputStream ois = new ObjectInputStream(
 							new BufferedInputStream(new FileInputStream(f)));
-					mSinhViens = (ArrayList<SinhVien>)ois.readObject();
+					mSinhViens = (TreeSet<SinhVien>)ois.readObject();
 					ois.close();
 					refreshTable();
 					lbl_status.setText("Loaded");
@@ -246,9 +258,14 @@ public class GUI2 extends JFrame implements ActionListener {
 		} else if (source.equals(btn_xoa)) {
 			int[] index = mTable.getSelectedRows();
 			StringBuilder mBuilder = new StringBuilder();
+			DefaultTableModel mModel = (DefaultTableModel)mTable.getModel();
 			for (int i : index) {
 				mBuilder.append(i + ",");
-				mSinhViens.remove(i);	
+				String mssv = (String) mModel.getValueAt(i, 0);
+				String hoten = (String) mModel.getValueAt(i, 1);
+				String gioitinh = (String) mModel.getValueAt(i, 2);
+				Date ntns = (Date) mModel.getValueAt(i, 3);
+				mSinhViens.remove(new SinhVien(mssv, hoten, gioitinh, ntns));	
 			}
 			refreshTable();
 			lbl_status.setText("Xoa cac dong : " + mBuilder.toString());
