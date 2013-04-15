@@ -281,11 +281,13 @@ public class JPaint extends JFrame {
 						xt = (x1 < x2) ? x1 : x2;
 						yt = (y1 < y2) ? y1 : y2;
 						width = x2 - x1 + 1;
-						if (width < 0)
+						if (width < 0){
 							width = -width;
+						}
 						height = y2 - y1 + 1;
-						if (height < 0)
+						if (height < 0){
 							height = -height;
+						}
 						// Clear recent rectangle
 						g.drawRect(xt, yt, width, height);
 						xt = (x1 < x) ? x1 : x;
@@ -294,6 +296,9 @@ public class JPaint extends JFrame {
 						if (width < 0)
 							width = -width;
 						height = y - y1 + 1;
+						if (height < 0){
+							height = -height;
+						}
 						// Draw new rectangle
 						g.drawRect(xt, yt, width, height);
 						x2 = x;
