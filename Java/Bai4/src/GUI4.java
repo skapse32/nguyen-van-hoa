@@ -13,6 +13,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.TreeSet;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -40,7 +41,7 @@ public class GUI4 extends JFrame implements ActionListener {
 	private JButton btn_load;
 	private JTable mTable;
 	private Boolean clickThem = false;
-	private ArrayList<Book> mBooks = new ArrayList<Book>();
+	private TreeSet<Book> mBooks = new TreeSet<Book>();
 	private JComboBox<String> list_sort;
 	private JFileChooser fc;
 	private JTextField txt_tacgia;
@@ -52,6 +53,7 @@ public class GUI4 extends JFrame implements ActionListener {
 
 	public GUI4() {
 		super();
+		
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		// tao panel input
 		addPanelInput();
@@ -194,19 +196,27 @@ public class GUI4 extends JFrame implements ActionListener {
 
 		} else if (source.equals(btn_sapxep)) {
 			if (list_sort.getSelectedIndex() == 0) {
-				Collections.sort(mBooks, new MaSachComperator());
+				TreeSet<Book> temp = new TreeSet<Book>(new MaSachComperator());
+				temp.addAll(mBooks);
+				mBooks = temp;
 				refreshTable();
 				lbl_status.setText("Sap xep theo Ma Sach");
 			} else if (list_sort.getSelectedIndex() == 1) {
-				Collections.sort(mBooks, new TenSachComperator());
+				TreeSet<Book> temp = new TreeSet<Book>(new TenSachComperator());
+				temp.addAll(mBooks);
+				mBooks = temp;
 				refreshTable();
 				lbl_status.setText("Sap xep theo Ten Sach");
 			} else if (list_sort.getSelectedIndex() == 2) {
-				Collections.sort(mBooks, new TacGiaComperator());
+				TreeSet<Book> temp = new TreeSet<Book>(new TacGiaComperator());
+				temp.addAll(mBooks);
+				mBooks = temp;
 				refreshTable();
 				lbl_status.setText("Sap xep theo Tac Gia");
 			} else {
-				Collections.sort(mBooks, new NamSBComperator());
+				TreeSet<Book> temp = new TreeSet<Book>(new NamSBComperator());
+				temp.addAll(mBooks);
+				mBooks = temp;
 				refreshTable();
 				lbl_status.setText("Sap xep theo Nam Xuat Ban");
 			}
@@ -234,7 +244,7 @@ public class GUI4 extends JFrame implements ActionListener {
 					File f = fc.getSelectedFile();
 					ObjectInputStream ois = new ObjectInputStream(
 							new BufferedInputStream(new FileInputStream(f)));
-					mBooks = (ArrayList<Book>) ois.readObject();
+					mBooks = (TreeSet<Book>) ois.readObject();
 					ois.close();
 					refreshTable();
 					lbl_status.setText("Loaded");
