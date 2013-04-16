@@ -198,7 +198,7 @@ public class JPaint extends JFrame {
 		public RadioPanel() {
 			setLayout(new FlowLayout(FlowLayout.LEFT));
 
-			String[] drString = { "Line", "Rectangle", "Circle" };
+			String[] drString = { "Line", "Rectangle", "Circle" , "Elipse"};
 			comboDraw = new JComboBox<String>(drString);
 			comboDraw.setPreferredSize(new Dimension(90, 25));
 			add(comboDraw);
@@ -207,7 +207,6 @@ public class JPaint extends JFrame {
 				public void itemStateChanged(ItemEvent e) {
 					if (e.getStateChange() == ItemEvent.SELECTED) {
 						drMode = ((Integer) comboDraw.getSelectedIndex() + 1);
-
 					}
 				}
 			});
@@ -251,12 +250,19 @@ public class JPaint extends JFrame {
 						l.add(ro);
 						lbl_status.setText("Ve Hinh chu Nhat");
 						break;
-					default:
+					case 3:
 						CircleObject co = new CircleObject(xt, yt, r);
 						co.draw(g);
 						addRow("Circle", co);
 						l.add(co);
 						lbl_status.setText("Ve Hinh Tron");
+						break;
+					default :
+						Elipse el = new Elipse(xt, yt, width, height);
+						el.draw(g);
+						addRow("Elipse", el);
+						l.add(el);
+						lbl_status.setText("Ve Hinh Elipse");
 						break;
 					}
 				}
@@ -305,7 +311,7 @@ public class JPaint extends JFrame {
 						y2 = y;
 						break;
 
-					default:
+					case 3 :
 						xt = (x1 < x2) ? x1 : x2;
 						yt = (y1 < y2) ? y1 : y2;
 						width = x2 - x1 + 1;
@@ -326,6 +332,34 @@ public class JPaint extends JFrame {
 						// Draw new circle
 						r = Math.max(height, width);
 						g.drawOval(xt, yt, r, r);
+						x2 = x;
+						y2 = y;
+						break;
+					
+					default : 
+						xt = (x1 < x2) ? x1 : x2;
+						yt = (y1 < y2) ? y1 : y2;
+						width = x2 - x1 + 1;
+						if (width < 0){
+							width = -width;
+						}
+						height = y2 - y1 + 1;
+						if (height < 0){
+							height = -height;
+						}
+						// Clear recent rectangle
+						g.drawOval(xt, yt, width, height);
+						xt = (x1 < x) ? x1 : x;
+						yt = (y1 < y) ? y1 : y;
+						width = x - x1 + 1;
+						if (width < 0)
+							width = -width;
+						height = y - y1 + 1;
+						if (height < 0){
+							height = -height;
+						}
+						// Draw new rectangle
+						g.drawOval(xt, yt, width, height);
 						x2 = x;
 						y2 = y;
 						break;
