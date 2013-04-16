@@ -1,7 +1,12 @@
 import java.awt.BorderLayout;
+import java.awt.ComponentOrientation;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedInputStream;
@@ -55,10 +60,16 @@ public class GUI2 extends JFrame implements ActionListener {
 	private JFileChooser fc;
 	private JLabel lbl_status;
 	private JPanel status_strip;
+	private GridBagConstraints c;
+	private Container panel;
 
 	public GUI2() {
 		super();
-		setLayout(new FlowLayout(FlowLayout.LEFT));
+		panel = getContentPane();
+		panel.setLayout(new GridBagLayout());
+		c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		panel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		// tao panel input
 		addPanelInput();
 		disablePanelInput();
@@ -67,20 +78,33 @@ public class GUI2 extends JFrame implements ActionListener {
 		// tao Jtable.
 		addTableGui();
 
+		addStatusBar();
+		
 		// add listener
 		addListerForControls();
 
-		lbl_status = new JLabel("Khoi Dong Chuong Trinh");
-		status_strip = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		status_strip.add(lbl_status);
-		status_strip.setPreferredSize(new Dimension(800, 20));
-		add(status_strip, BorderLayout.SOUTH);
+		
 
 		fc = new JFileChooser();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800, 600);
+		setSize(800, 640);
 		setVisible(true);
+	}
+
+	public void addStatusBar() {
+		lbl_status = new JLabel("Khoi Dong Chuong Trinh");
+		status_strip = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		status_strip.add(lbl_status);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 0;       //reset to default
+		c.weighty = 1.0;   //request any extra vertical space
+		c.anchor = GridBagConstraints.PAGE_END; //bottom of space
+		c.insets = new Insets(10,0,0,0);  //top padding
+		c.gridx = 0;       //aligned with button 2
+		c.gridwidth = 2;   //2 columns wide
+		c.gridy = 2;       //third row
+		panel.add(status_strip,c);
 	}
 
 	public void addListerForControls() {
@@ -123,7 +147,13 @@ public class GUI2 extends JFrame implements ActionListener {
 		mTableModel.addColumn("NTNS");
 		JScrollPane mJScrollPane = new JScrollPane(mTable);
 		mJScrollPane.setPreferredSize(new Dimension(760, 310));
-		add(mJScrollPane);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 40;      //make this component tall
+		c.weightx = 0.0;
+		c.gridwidth = 3;
+		c.gridx = 0;
+		c.gridy = 1;
+		panel.add(mJScrollPane,c);
 	}
 
 	public void addPanelControls() {
@@ -147,7 +177,11 @@ public class GUI2 extends JFrame implements ActionListener {
 
 		mControlPanel.setPreferredSize(new Dimension(380, 200));
 		mControlPanel.setBorder(new TitledBorder("Controls"));
-		add(mControlPanel);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.5;
+		c.gridx = 1;
+		c.gridy = 0;
+		panel.add(mControlPanel,c);
 	}
 
 	public void addPanelInput() {
@@ -188,7 +222,11 @@ public class GUI2 extends JFrame implements ActionListener {
 		combine.add(panelInput, BorderLayout.CENTER);
 		combine.setPreferredSize(new Dimension(380, 200));
 		combine.setBorder(new TitledBorder("Input"));
-		add(combine);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.5;
+		c.gridx = 0;
+		c.gridy = 0;
+		panel.add(combine,c);
 	}
 
 	@Override
