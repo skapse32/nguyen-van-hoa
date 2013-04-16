@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.util.Comparator;
 
 
-public class NTNSComperator implements Comparator<SinhVien> {
+public class NTNSComperator implements Comparator<SinhVien>, Serializable {
 
 	@Override
 	public int compare(SinhVien o1, SinhVien o2) {
