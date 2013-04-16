@@ -1,7 +1,7 @@
 import java.io.Serializable;
 import java.sql.Date;
 
-public class Book implements Serializable{
+public class Book implements Serializable,Comparable<Book>{
 
 	private String masach;
 	private String tenSach;
@@ -45,5 +45,10 @@ public class Book implements Serializable{
 	public String toString() {
 		return "Book [masach=" + masach + ", tenSach=" + tenSach + ", tacgia="
 				+ tacgia + ", namSB=" + namSB + "]";
+	}
+	@Override
+	public int compareTo(Book o) {
+		// TODO Auto-generated method stub
+		return this.getMasach().compareToIgnoreCase(o.getMasach());
 	}
 }
