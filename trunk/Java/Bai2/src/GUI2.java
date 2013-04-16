@@ -34,6 +34,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.DateFormatter;
+import javax.swing.text.MaskFormatter;
 
 public class GUI2 extends JFrame implements ActionListener {
 
@@ -73,10 +74,10 @@ public class GUI2 extends JFrame implements ActionListener {
 		status_strip = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		status_strip.add(lbl_status);
 		status_strip.setPreferredSize(new Dimension(800, 20));
-		add(status_strip, BorderLayout.SOUTH);		
-		
+		add(status_strip, BorderLayout.SOUTH);
+
 		fc = new JFileChooser();
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800, 600);
 		setVisible(true);
@@ -161,6 +162,14 @@ public class GUI2 extends JFrame implements ActionListener {
 
 		JLabel lbl_ntns = new JLabel("NTNS : ");
 		txt_ntns = new JFormattedTextField(new SimpleDateFormat("dd/MM/yyyy"));
+		MaskFormatter dateFormat;
+		try {
+			dateFormat = new MaskFormatter("##/##/####");
+			dateFormat.install(txt_ntns);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		btn_nhap = new JButton("Nhap");
 
@@ -195,9 +204,10 @@ public class GUI2 extends JFrame implements ActionListener {
 			SinhVien mSinhVien = new SinhVien(txt_mssv.getText(),
 					txt_hoten.getText(), (String) comboSex.getSelectedItem(),
 					(Date) txt_ntns.getValue());
-			if(mSinhViens.contains(mSinhVien)){
-				JOptionPane.showMessageDialog(null, "Không thể lưu 2 sinh viên có cùng MSSV","Lỗi nhập dữ liệu",JOptionPane.ERROR_MESSAGE);
-				return;
+			if (mSinhViens.contains(mSinhVien)) {
+				JOptionPane.showMessageDialog(null,
+						"Không thể lưu 2 sinh viên có cùng MSSV",
+						"Lỗi nhập dữ liệu", JOptionPane.ERROR_MESSAGE);
 			}
 			mSinhViens.add(mSinhVien);
 			refreshTable();
@@ -205,26 +215,30 @@ public class GUI2 extends JFrame implements ActionListener {
 			lbl_status.setText("Clicked Button Nhap");
 		} else if (source.equals(btn_sapxep)) {
 			if (list_sort.getSelectedIndex() == 0) { // sap xep theo MSSV
-				TreeSet<SinhVien> temp = new TreeSet<SinhVien>(new MssvComperator());
+				TreeSet<SinhVien> temp = new TreeSet<SinhVien>(
+						new MssvComperator());
 				temp.addAll(mSinhViens);
 				mSinhViens = temp;
 				refreshTable();
 				lbl_status.setText("Sap xep theo MSSV");
-			} else if (list_sort.getSelectedIndex() == 1) { // sap xep theo Ho Ten
-				TreeSet<SinhVien> temp = new TreeSet<SinhVien>(new HoTenComperator());
+			} else if (list_sort.getSelectedIndex() == 1) { // sap xep theo Ho
+															// Ten
+				TreeSet<SinhVien> temp = new TreeSet<SinhVien>(
+						new HoTenComperator());
 				temp.addAll(mSinhViens);
 				mSinhViens = temp;
 				refreshTable();
 				lbl_status.setText("Sap xep theo Ho Ten");
 			} else {
-				TreeSet<SinhVien> temp = new TreeSet<SinhVien>(new NTNSComperator());
+				TreeSet<SinhVien> temp = new TreeSet<SinhVien>(
+						new NTNSComperator());
 				temp.addAll(mSinhViens);
 				mSinhViens = temp;
 				refreshTable();
 				lbl_status.setText("Sap xep theo NTNS");
 			}
 		} else if (source.equals(btn_save)) {
-			
+
 			int reValue = fc.showSaveDialog(GUI2.this);
 			if (reValue == JFileChooser.APPROVE_OPTION) {
 				try {
@@ -247,7 +261,7 @@ public class GUI2 extends JFrame implements ActionListener {
 					File f = fc.getSelectedFile();
 					ObjectInputStream ois = new ObjectInputStream(
 							new BufferedInputStream(new FileInputStream(f)));
-					mSinhViens = (TreeSet<SinhVien>)ois.readObject();
+					mSinhViens = (TreeSet<SinhVien>) ois.readObject();
 					ois.close();
 					refreshTable();
 					lbl_status.setText("Loaded");
@@ -258,14 +272,23 @@ public class GUI2 extends JFrame implements ActionListener {
 		} else if (source.equals(btn_xoa)) {
 			int[] index = mTable.getSelectedRows();
 			StringBuilder mBuilder = new StringBuilder();
-			DefaultTableModel mModel = (DefaultTableModel)mTable.getModel();
+			DefaultTableModel mModel = (DefaultTableModel) mTable.getModel();
 			for (int i : index) {
-				mBuilder.append(i + ",");
-				String mssv = (String) mModel.getValueAt(i, 0);
-				String hoten = (String) mModel.getValueAt(i, 1);
-				String gioitinh = (String) mModel.getValueAt(i, 2);
-				Date ntns = (Date) mModel.getValueAt(i, 3);
-				mSinhViens.remove(new SinhVien(mssv, hoten, gioitinh, ntns));	
+				/*
+				 * mBuilder.append(i + ","); String mssv = (String)
+				 * mModel.getValueAt(i, 0); String hoten = (String)
+				 * mModel.getValueAt(i, 1); String gioitinh = (String)
+				 * mModel.getValueAt(i, 2); Date ntns = (Date)
+				 * mModel.getValueAt(i, 3); mSinhViens.remove(new SinhVien(mssv,
+				 * hoten, gioitinh, ntns));
+				 */
+				Iterator<SinhVien> it = mSinhViens.iterator();
+				int j = 0;
+				while (j < i) {
+					it.next();
+					j++;
+				}
+				it.remove();
 			}
 			refreshTable();
 			lbl_status.setText("Xoa cac dong : " + mBuilder.toString());
@@ -275,16 +298,16 @@ public class GUI2 extends JFrame implements ActionListener {
 	public void addRowTalbe(SinhVien sv) {
 		DefaultTableModel mModel = (DefaultTableModel) mTable.getModel();
 		mModel.addRow(new Object[] { sv.getMSSV(), sv.getHoten(),
-				sv.getGioiTinh(), sv.getNtns() });
+				sv.getGioiTinh(), (new SimpleDateFormat("dd/MM/yyyy")).format(sv.getNtns()) });
 	}
 
-	public void refreshTable(){
-		((DefaultTableModel)mTable.getModel()).setRowCount(0);
+	public void refreshTable() {
+		((DefaultTableModel) mTable.getModel()).setRowCount(0);
 		for (SinhVien sv : mSinhViens) {
 			addRowTalbe(sv);
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new GUI2();
