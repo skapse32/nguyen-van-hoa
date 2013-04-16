@@ -1,8 +1,10 @@
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
 
-public class SinhVien implements Serializable{
+
+public class SinhVien implements Serializable, Comparable<SinhVien>{
 
 	private String MSSV;
 	private String Hoten;
@@ -51,7 +53,14 @@ public class SinhVien implements Serializable{
 
 	@Override
 	public String toString() {
-		return "SinhVien : [" + Hoten +"]";
+		return "SinhVien [MSSV=" + MSSV + ", Hoten=" + Hoten + ", gioiTinh="
+				+ gioiTinh + ", ntns=" + ntns + "]";
+	}
+
+	@Override
+	public int compareTo(SinhVien arg0) {
+		// TODO Auto-generated method stub
+		return this.getMSSV().compareToIgnoreCase(arg0.getMSSV());
 	}
 	
 }

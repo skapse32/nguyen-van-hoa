@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.TreeSet;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -50,7 +51,7 @@ public class GUI3 extends JFrame implements ActionListener {
 	private JButton btn_save;
 	private JButton btn_load;
 	private Boolean clickThem = false;
-	private ArrayList<SinhVien> mSinhViens = new ArrayList<>();
+	private TreeSet<SinhVien> mSinhViens = new TreeSet<>();
 	private JComboBox<String> list_sort;
 	private JFileChooser fc;
 	private JPanel mPanelCombine;
@@ -209,15 +210,21 @@ public class GUI3 extends JFrame implements ActionListener {
 			lbl_status.setText("Clickec Button Nhap");
 		} else if (source.equals(btn_sapxep)) {
 			if (list_sort.getSelectedIndex() == 0) {
-				Collections.sort(mSinhViens,new MssvComperator());
+				TreeSet<SinhVien> temp = new TreeSet<SinhVien>(new MssvComperator());
+				temp.addAll(mSinhViens);
+				mSinhViens = temp;
 				refreshTreeView();
 				lbl_status.setText("Sap xep theo MSSV");
 			} else if (list_sort.getSelectedIndex() == 1) {
-				Collections.sort(mSinhViens,new HoTenComperator());
+				TreeSet<SinhVien> temp = new TreeSet<SinhVien>(new MssvComperator());
+				temp.addAll(mSinhViens);
+				mSinhViens = temp;
 				refreshTreeView();
 				lbl_status.setText("Sap xep theo Ho Ten");
 			} else {
-				Collections.sort(mSinhViens,new NTNSComperator());
+				TreeSet<SinhVien> temp = new TreeSet<SinhVien>(new MssvComperator());
+				temp.addAll(mSinhViens);
+				mSinhViens = temp;
 				refreshTreeView();
 				lbl_status.setText("Sap xep theo NTNS");
 			}
@@ -225,10 +232,9 @@ public class GUI3 extends JFrame implements ActionListener {
 
 			int reValue = fc.showSaveDialog(GUI3.this);
 			if (reValue == JFileChooser.APPROVE_OPTION) {
-				try {
-					File f = fc.getSelectedFile();
-					ObjectOutputStream os = new ObjectOutputStream(
-							new BufferedOutputStream(new FileOutputStream(f)));
+				File f = fc.getSelectedFile();
+				try (ObjectOutputStream os = new ObjectOutputStream(
+						new BufferedOutputStream(new FileOutputStream(f)));){
 					os.writeObject(mSinhViens);
 					os.flush();
 					os.close();
@@ -241,11 +247,10 @@ public class GUI3 extends JFrame implements ActionListener {
 		} else if (source.equals(btn_load)) {
 			int reValue = fc.showOpenDialog(GUI3.this);
 			if (reValue == JFileChooser.APPROVE_OPTION) {
-				try {
-					File f = fc.getSelectedFile();
-					ObjectInputStream ois = new ObjectInputStream(
-							new BufferedInputStream(new FileInputStream(f)));
-					mSinhViens = (ArrayList<SinhVien>) ois.readObject();
+				File f = fc.getSelectedFile();
+				try(ObjectInputStream ois = new ObjectInputStream(
+						new BufferedInputStream(new FileInputStream(f)));) {
+					mSinhViens = (TreeSet<SinhVien>) ois.readObject();
 					refreshTreeView();
 					ois.close();
 					lbl_status.setText("Clicked");
