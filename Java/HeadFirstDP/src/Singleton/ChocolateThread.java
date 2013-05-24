@@ -11,7 +11,6 @@ public class ChocolateThread extends Thread {
 	public void run() {
 		super.run();
 		boiler.fill();
-		boiler.boil();
 		boiler.drain();
 	}
 }
