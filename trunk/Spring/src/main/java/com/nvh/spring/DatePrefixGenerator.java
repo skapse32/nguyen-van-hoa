@@ -7,6 +7,7 @@ import java.util.Date;
 public class DatePrefixGenerator implements PrefixGenerator {
 
 	private DateFormat formatter;
+  private int x;
 
 	public void setFormatter(String formatter) {
 		this.formatter = new SimpleDateFormat(formatter);
