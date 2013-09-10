@@ -8,6 +8,7 @@ public class DatePrefixGenerator implements PrefixGenerator {
 
 	private DateFormat formatter;
   private int x;
+  private int x2;
 
 	public void setFormatter(String formatter) {
 		this.formatter = new SimpleDateFormat(formatter);
