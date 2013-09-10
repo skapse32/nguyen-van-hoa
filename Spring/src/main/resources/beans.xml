@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="baseSequenceGenerator" class="com.nvh.spring.SequenceGenerator" abstract="true">
+		<property name="initial" value="100000"></property>
+	</bean>
+	<bean id="sequenceGenerator" parent="baseSequenceGenerator">
+		<property name="initial" value="20"></property>
+		<property name="suffix" value="A"></property>
+		<property name="prefix" ref="dateSequenceGenerator"></property>
+	</bean>
+	
+	<bean id="reserveSequence" parent="baseSequenceGenerator" class="com.nvh.spring.ReverseSequence"></bean>
+	<bean id="dateSequenceGenerator" class="com.nvh.spring.DatePrefixGenerator">
+		<property name="formatter" value="dd-MM-yyyy"></property>
+	</bean>
+</beans>
