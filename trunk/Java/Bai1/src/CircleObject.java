@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class CircleObject extends DrawObject implements Serializable{
 
-	int x1,y1,x2;
+	int x1,y1,x2,x3;
 	int radius;
 
 	public CircleObject(int x1, int y1, int r) {
