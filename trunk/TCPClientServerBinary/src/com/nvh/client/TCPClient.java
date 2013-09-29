@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.nvh.readwrite.socket.BinaryData;
 import com.nvh.readwrite.socket.StringData;
 
@@ -11,7 +14,11 @@ public class TCPClient {
 	private Socket socket;
 	private String host;
 	private int port;
-
+	
+	public TCPClient(){
+		
+	}
+	
 	public TCPClient(String host, int port) {
 		this.host = host;
 		this.port = port;

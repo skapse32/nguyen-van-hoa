@@ -3,6 +3,9 @@ package com.nvh.Thread;
 import java.io.IOException;
 import java.net.Socket;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.nvh.readwrite.socket.BinaryData;
 import com.nvh.readwrite.socket.StringData;
 
@@ -24,13 +27,15 @@ public class TCPThread extends Thread {
 		try {
 			System.out.println("Data From Connection " + id);
 			String localtion = StringData.Read(connection);
-			BinaryData.read(connection, localtion);
+			ApplicationContext mContext = new ClassPathXmlApplicationContext("beans.xml");
+			BinaryData mBinaryData = (BinaryData)mContext.getBean("binaryData");
+			mBinaryData.read(connection, localtion);
 			connection.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			interrupt();
+			stop();;
 			System.out.println("Thread " + id + "close!");
 		}
 	}
