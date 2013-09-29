@@ -14,51 +14,30 @@ import java.net.Socket;
 
 public class StringData {
 
-	public static void Read(Socket connection){
+	public static String Read(Socket connection){
 		try {
 			InputStream is = connection.getInputStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
-			String s = "";
-			writeToFile(br);
+			String s = br.readLine();
+			return s;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
 		
 	}
 	
-	public static void write(Socket connection, String text){
+	public static boolean write(Socket connection, String text){
 		try {
 			OutputStream os = connection.getOutputStream();
 			PrintWriter pw = new PrintWriter(os);
-			FileReader fr = new FileReader(text);
-			BufferedReader br = new BufferedReader(fr);
-			String s = "";
-			while (br.ready()) {
-				s = br.readLine();
-				pw.println(s);
-			}
-			pw.close();
-			br.close();
+			pw.println(text);
+			pw.flush();
+			return true;
 		} catch (IOException e) {
-			
+			return false;
 		}
 	}
-	
-	public static void writeToFile(BufferedReader br){
-		String s = "";
-		try {
-			FileWriter fw  = new FileWriter("E://nvhserver.txt");
-			PrintWriter bw = new PrintWriter(fw);
-			while ((s = br.readLine()) != null) {
-				System.out.println(s);
-				bw.println(s);
-			}
-			bw.close();
-			fw.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+
 }
