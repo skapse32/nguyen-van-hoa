@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 import com.nvh.readwrite.socket.BinaryData;
+import com.nvh.readwrite.socket.StringData;
 
 public class TCPThread extends Thread {
 	private Socket connection;
@@ -22,7 +23,8 @@ public class TCPThread extends Thread {
 		// TODO Auto-generated method stub
 		try {
 			System.out.println("Data From Connection " + id);
-			BinaryData.read(connection, "E://phim.mkv");
+			String localtion = StringData.Read(connection);
+			BinaryData.read(connection, localtion);
 			connection.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

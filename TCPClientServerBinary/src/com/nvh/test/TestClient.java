@@ -8,12 +8,11 @@ public class TestClient {
 
 	public static void main(String[] args){
 		TCPClient mClient = new TCPClient("localhost", 5000);
+		System.out.println("Nhap vi tri file can gui len server : ");
 		Scanner mScanner = new Scanner(System.in);
-		String input;
-		while(!(input = mScanner.nextLine()).equals("exit")){
-			System.out.println(input);
-			mClient.run(input);
-		}
+		String srcFile = mScanner.nextLine();
+		String destFile = mScanner.nextLine();
+		mClient.run(srcFile, destFile);
 		System.out.println("Client exit!");
 	}
 	
