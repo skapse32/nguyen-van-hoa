@@ -12,7 +12,7 @@ import java.net.Socket;
 
 public class BinaryData {
 
-	public static void read(Socket connection, String outputFile){
+	public void read(Socket connection, String outputFile){
 		//doc file va ghi file
 		int size = 1024;
 		byte[] buffer = new byte[size];
@@ -27,8 +27,8 @@ public class BinaryData {
 			long byteWrote = 0;
 			FileOutputStream os = new FileOutputStream(outputFile);
 			while((count = bis.read(buffer))!= -1){
+				WriteToServer(os,count,buffer);
 				byteWrote += count;
-				os.write(buffer);
 			}
 			System.out.println("Server wrote " + byteWrote + " byte(s)" );
 			bis.close();
@@ -39,6 +39,10 @@ public class BinaryData {
 		}
 	}
 	
+
+	
+
+
 	public static void write(Socket connection,String localtionFile){
 		//nhiem vu la doc file tu client roi gui len server
 		try {
@@ -50,14 +54,34 @@ public class BinaryData {
 			OutputStream os = connection.getOutputStream();
 			BufferedOutputStream bos = new BufferedOutputStream(os);
 			while((byteRead = is.read(buffer)) != -1){
-				bos.write(buffer, 0, byteRead);
+				WriteBuffer(buffer, bos, byteRead);
 			}
 			bos.close();
+			os.close();
+			connection.close();
 			System.out.println("Sent to server!");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	public static void WriteBuffer(byte[] buffer,BufferedOutputStream bos, int byteRead){
+		try {
+			bos.write(buffer, 0, byteRead);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
+	public static void WriteToServer(FileOutputStream os, int count,
+			byte[] buffer) {
+		// TODO Auto-generated method stub
+		try {
+			os.write(buffer);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
