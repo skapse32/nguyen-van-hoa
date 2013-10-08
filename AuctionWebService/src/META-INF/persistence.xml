@@ -16,9 +16,9 @@
 		<class>dao.Sanpham</class>
 		<class>dao.Lichsudaugia</class>
 		<properties>
-			<property name="javax.persistence.jdbc.driver"
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:8888/auctiondb" />
+				value="jdbc:mysql://localhost:3306/auctiondb" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 		</properties>
 	</persistence-unit>
