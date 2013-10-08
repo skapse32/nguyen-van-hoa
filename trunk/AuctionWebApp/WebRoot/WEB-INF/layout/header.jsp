@@ -11,8 +11,7 @@
 
 				<div id="UserSignInLinks">
 					<a href="${pageContext.request.contextPath}/taikhoan/thongtin">${username}</a>
-					&nbsp;&nbsp;|&nbsp;&nbsp; <a
-						href="${pageContext.request.contextPath}/dangxuat">Đăng xuất</a>
+					&nbsp;&nbsp;|&nbsp;&nbsp; <a ref="${pageContext.request.contextPath}/dangxuat">Đăng xuất</a>
 				</div>
 			</c:when>
 			<c:otherwise>
@@ -29,7 +28,8 @@
 </div>
 <div class="Column12">
 	<div id="Logo">
-		<img src="${pageContext.request.contextPath}/resources/images/bg_logo.jpg">
+		<img
+			src="${pageContext.request.contextPath}/resources/images/bg_logo.jpg">
 	</div>
 </div>
 <div class="Column12">
@@ -47,7 +47,9 @@
 					<c:choose>
 						<c:when test="${sessionScope.role == 'Admin'}">
 							<div class="Menu_Top_Link">
-								<a href="${pageContext.request.contextPath}/admin/sanphamhuyadmin">Quản lý sản phẩm (admin)</a>
+								<a
+									href="${pageContext.request.contextPath}/admin/sanphamhuyadmin">Quản
+									lý sản phẩm (admin)</a>
 							</div>
 						</c:when>
 						<c:otherwise>
@@ -57,7 +59,8 @@
 									lý sản phẩm </a>
 							</div>
 							<div class="Menu_Top_Link">
-								<a href="${pageContext.request.contextPath}/taikhoan/thongtin">Quản lý tài khoản</a>
+								<a href="${pageContext.request.contextPath}/taikhoan/thongtin">Quản
+									lý tài khoản</a>
 							</div>
 						</c:otherwise>
 					</c:choose>
@@ -75,7 +78,7 @@
 					<div>
 						<c:if test="${sessionScope.loaiphien!=null}">
 							<label
-								style="font-weight: bold;font-size: 14px;margin-left: 30px;"></label>
+								style="font-weight: bold; font-size: 14px; margin-left: 30px;"></label>
 							<select name="loaiphien">
 								<option
 									<c:if test="${sessionScope.loaiphien==1}" >
