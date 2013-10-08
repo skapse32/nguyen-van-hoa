@@ -1,0 +1,12 @@
+#Mon Jul 01 00:32:02 ICT 2013
+eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/pages/sanphamdangdaujsp.jsp=UTF-8
+encoding//WebRoot/index.jsp=UTF-8
+encoding//src/controller/ChiTietSanPhamController.java=UTF-8
+encoding//src/controller/DangNhapController.java=UTF-8
+encoding//src/controller/QuanLySanPhamADController.java=UTF-8
+encoding//src/controller/QuanLySanPhamUserController.java=UTF-8
+encoding//src/controller/SanPhamController.java=UTF-8
+encoding//src/controller/TaiKhoanController.java=UTF-8
+encoding//src/controller/ThanhToanController.java=UTF-8
+encoding//src/controller/TimKiemController.java=UTF-8
