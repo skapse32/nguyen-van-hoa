@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="GiangVienProject">
-		<class>model.Bangdanhgia</class>
-		<class>model.BangdanhgiaKq</class>
-		<class>model.Cauhoi</class>
-		<class>model.CauhoiPK</class>
-		<class>model.Monhoc</class>
-		<class>model.Thoikhoabieu</class>
-		<class>model.User</class>
 	</persistence-unit>
 </persistence>
