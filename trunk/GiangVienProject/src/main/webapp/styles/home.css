@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+
+.title{
+	height: 200px;
+	width: 600px;
+	margin-top: 200px;
+	padding-top: 30px;
+	margin-left : 100px;
+	color : darkblue;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	text-shadow: 5px 5px 5px #999;
+	opacity: 0.0;
+}
+
+.title h1{
+	font-size:24px;
+	text-align: right;
+}
+
+.title h2{
+	font-size:16px;
+	text-align: right;
+}
+
+.title img{
+	float : right;
+	height: 100px;
+	width: 100px;	
+}
+
+body {
+  /* fallback */
+  background-color: #2F2727;
+  background-image: url(images/radial_bg.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  /* Safari 4-5, Chrome 1-9 */
+  /* Can't specify a percentage size? Laaaaaame. */
+  background: -webkit-gradient(radial, center center, 0, center center, 460, from(#1a82f7), to(#CCC));
+
+  /* Safari 5.1+, Chrome 10+ */
+  background: -webkit-radial-gradient(circle, #CCC, #FFF);
+
+  /* Firefox 3.6+ */
+  background: -moz-radial-gradient(circle, #1a82f7, #2F2727);
+
+  /* IE 10 */
+  background: -ms-radial-gradient(circle, #1a82f7, #2F2727);
+
+  /* Opera couldn't do radial gradients, then at some point they started supporting the -webkit- syntax, how it kinda does but it's kinda broken (doesn't do sizing) */
+}
