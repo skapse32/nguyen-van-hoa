@@ -3,8 +3,14 @@
 	xmlns:spring="http://www.springframework.org/tags" version="2.0">
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
-	<spring:message code="header_text" var="headerText" />
+	<spring:message code="header_text" var="headerText"
+	<spring:theme code="styleheader" var="app_css" /> />
 	<div id="appname">
 		<h1>${headerText}</h1>
 	</div>
+	<div class="title">
+    	<img src="image/logo_1.png"/>
+    	<h1>KHOA ĐÀO TẠO CHẤT LƯỢNG CAO</h1>
+        <h2>ĐẠI HỌC SƯ PHẠM KỸ THUẬT TP.HỒ CHÍ MINH</h2> 
+    </div>
 </div>
