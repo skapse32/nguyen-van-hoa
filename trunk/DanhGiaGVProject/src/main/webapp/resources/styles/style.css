@@ -1,0 +1,289 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face
+{
+    font-family: myFont;
+    src: url('segoeuisl.ttf'),
+        url('segoeui.eot');
+}
+
+select,.textfield {
+	width: 220px;
+	border: 1px solid #999;
+	border-radius: 5px;
+}
+
+.title {
+	height: 200px;
+	width: 600px;
+	margin-top: 100px;
+	padding-top: 30px;
+	margin-left: 150px;
+	color: darkblue;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	text-shadow: 5px 5px 5px #999;
+	opacity: 0.0;
+}
+
+.title h1 {
+	font-size: 24px;
+	text-align: right;
+}
+
+.title h2 {
+	font-size: 16px;
+	text-align: right;
+}
+
+.title img {
+	float: right;
+	height: 100px;
+	width: 100px;
+}
+
+form {
+	width: 250px;
+	padding: 5px;
+	margin-top : 100px;
+	margin-right: 200px;
+	border-radius: 5px;
+	border: 1px solid #999;
+	box-shadow: 5px 5px 5px #999;
+	-moz-box-shadow: 5px 5px 5px #999;
+	-webkit-box-shadow: 5px 5px 5px #999;
+	float:right;
+}
+
+.btn_search {
+	position: relative;
+	right: -120px;
+	width: 100px;
+	height: 30px;
+	border: 1px solid #999;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+nav {
+    background-color:#3C8DC5;
+    height:60px;
+    border-bottom:solid 0px #FFF;
+    -webkit-box-shadow: 0px 0px 10px rgba(17, 63, 140,0.9);
+    -moz-box-shadow:    0px 0px 10px rgba(17, 63, 140,0.9);
+    box-shadow:         0px 0px 10px rgba(17, 63, 140,0.9);
+    background-image: linear-gradient(bottom,#00638D 0%,#348DCE 94%);
+    background-image: -o-linear-gradient(bottom,#00638D 0%,#348DCE 94%);
+    background-image: -moz-linear-gradient(bottom,#00638D 0%,#348DCE 94%);
+    background-image: -webkit-linear-gradient(bottom,#00638D 0%,#368FCF 94%);
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#00638D),color-stop(0.94,#348DCE));
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#368FCF, endColorstr=#00638D)";
+}
+.nav {
+    height:100%;   
+}
+
+.nav ul {
+    list-style:none;	
+}
+
+.nav ul#topnav {
+    background-color:#3C8DC5;
+    background-image: linear-gradient(bottom,#00638D 0%,#348DCE 94%);
+    background-image: -o-linear-gradient(bottom,#00638D 0%,#348DCE 94%);
+    background-image: -moz-linear-gradient(bottom,#00638D 0%,#348DCE 94%);
+    background-image: -webkit-linear-gradient(bottom,#00638D 0%,#368FCF 94%);
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#00638D),color-stop(0.94,#348DCE));
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#348DCE, endColorstr=#00638D)";
+    height:100%;
+    font-weight: 700;
+}
+
+.nav ul#topnav li{
+    float:left;
+    width:14%;
+    padding:0px;
+    height:100%;
+}
+
+.nav ul#topnav li a {
+    display:block;
+    color:#FFF;
+    text-decoration:none;
+    text-align:center;
+    vertical-align: middle;
+    height:102%;
+}
+
+.nav ul#topnav li a:hover {
+    background-color:#ef7901;
+}
+
+.nav ul#topnav li a:active {
+    background-color:#ef7901;
+}
+
+
+
+.nav ul#topnav li a span {
+    font-weight:500;
+}
+
+.nav ul#topnav li a img {
+    padding-top: 6px;
+    height: 26px;
+    width: 26px;
+}
+
+.main-content{
+    background-clip: content-box;
+    border: 8px solid #000; 
+    width: 1300px;
+    margin : 60px auto auto auto;
+    padding: 8px;	
+    border: rgba(0,255,255, 0.3);
+    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.8);
+    -moz-box-shadow:    0px 0px 8px rgba(0,0,0,0.8);
+    box-shadow:         0px 0px 8px rgba(0,0,0,0.8);
+}
+
+maincontent {
+    background-color:#FFF;
+    padding:20px;
+    display:table;	
+    width: 1250px;
+    margin : auto;
+}
+
+
+body {
+	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+	font-size: 12px;
+	background-color: #5C5C5C;
+	background-image: url(../giangvien/resources/images/bgcongcuphai.png);
+	/* fallback */
+	background-color: #2F2727;
+	background-image: url(images/radial_bg.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	/* Safari 4-5, Chrome 1-9 */
+	/* Can't specify a percentage size? Laaaaaame. */
+	background: -webkit-gradient(radial, center center, 0, center center, 460, from(#1a82f7
+		), to(#CCC));
+	/* Safari 5.1+, Chrome 10+ */
+	background: -webkit-radial-gradient(circle, #CCC, #FFF);
+	/* Firefox 3.6+ */
+	background: -moz-radial-gradient(circle, #1a82f7, #2F2727);
+	/* IE 10 */
+	background: -ms-radial-gradient(circle, #1a82f7, #2F2727);
+
+	/* Opera couldn't do radial gradients, then at some point they started supporting the -webkit- syntax, how it kinda does but it's kinda broken (doesn't do sizing) */
+}
+
+line div#one {
+	background-color: #cdf061;
+}
+
+line div {
+	margin-top: 30px;
+	width: 20%;
+	height: 5px;
+	float: left;
+}
+
+line div#two {
+	background-color: #dd6d6d;
+}
+
+line div#three {
+	background-color: #51d072;
+}
+
+line div#four {
+	background-color: #e361ff;
+}
+
+line div#five {
+	background-color: #ffc34e;
+}
+
+footer {
+	margin-top: 30px;
+	height: 160px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	background-color: #003366;
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
+	background-image: linear-gradient(bottom, #113F8C 30%, #003366 70%);
+	background-image: -o-linear-gradient(bottom, #113F8C 30%, #003366 70%);
+	background-image: -moz-linear-gradient(bottom, #113F8C 30%, #003366 70%);
+	background-image: -webkit-linear-gradient(bottom, #113F8C 30%, #003366 70%);
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.3, #113F8C),
+		color-stop(0.7, #003366));
+}
+
+footer div {
+	position: relative;
+}
+
+footer div.inside div#footer-link {
+	width: 200px;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	border-left: solid 1px #A0A0A4;
+	padding-left: 20px;
+}
+
+footer div.inside div#footer-link a {
+	text-decoration: none;
+	color: #A0A0A4;
+}
+
+footer div.inside div#footer-link a:hover {
+	text-decoration: none;
+	color: #808080;
+}
+
+footer div.inside div#footer-link a:active {
+	text-decoration: none;
+	color: #808080;
+}
+
+footer div.inside p {
+	padding-top: 40px;
+	color: #FFF;
+}
+
+footer div.inside p span {
+	color: #808080;
+}
+
+input#button:hover {
+    cursor: pointer;	
+}
+
+input#textbox{
+    height: 25px;
+    background-color:#f5f5f5;
+    border: solid 1px #B7B7B7;	
+    padding: 0px 5px 0px 5px;
+}
+
+input#button{
+    height:25px;
+    border: solid 1px #3B6E22;
+    background-color:#6FAA55;
+    color:#FFF;
+    padding: 0px 20px 0px 20px;    
+    -webkit-box-shadow: 1px 1px 3px rgba(17, 63, 140,0.8);
+    -moz-box-shadow:    1px 1px 3px rgba(17, 63, 140,0.8);
+    box-shadow:         1px 1px 3px rgba(17, 63, 140,0.8);
+    background-image: linear-gradient(bottom,#3B6E22 0%,#6FAA55 84%);
+    background-image: -o-linear-gradient(bottom,#3B6E22 0%,#6FAA55 84%);
+    background-image: -moz-linear-gradient(bottom,#3B6E22 0%,#6FAA55 84%);
+    background-image: -webkit-linear-gradient(bottom,#3B6E22 0%,#6FAA55 84%);
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#3B6E22),color-stop(0.84,#6FAA55));
+    font-weight: bold;
+}
