@@ -3,7 +3,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <div class="login">
-<form method="post" action='<c:url value="/login" />'>
+<form id="frmlogin" method="post" action='<c:url value="/login" />'>
 	<fieldset>
 		<legend>Login</legend>
 		User Name : <input id="textbox" type="text" name="username"

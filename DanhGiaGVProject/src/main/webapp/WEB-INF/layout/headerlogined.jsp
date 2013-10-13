@@ -8,9 +8,8 @@
 					border="0px" />
 				<p>Trang Chủ</p>
 			</a></li>
-			<li><a href="${pageContext.request.contextPath}/login?action=logout"> <br /> Thoát <br />
+			<li><a href="${pageContext.request.contextPath}/login?logout"> <br /> Thoát <br />
 					<span>(Chào: <%=((User)session.getAttribute("account")).getHoten() %> )</span></a></li>
-
 		</ul>
 	</div>
 </nav>
