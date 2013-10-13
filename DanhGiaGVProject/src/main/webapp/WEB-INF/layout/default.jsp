@@ -10,12 +10,12 @@
 <script
 	src="${pageContext.request.contextPath}/resources/script/script.js"
 	type="text/javascript"></script>
-<title>Default</title>
+<title><tiles:insertAttribute name="title" ignore="true"/></title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/styles/style.css"
 	type="text/css" />
 </head>
-<body>
+<body style="background-image: url(${pageContext.request.contextPath}/resources/images/bgcongcuphai.png);">
 	<tiles:insertAttribute name="header" ignore="true" />
 	<div class="main-content inside">
 		<maincontent> 
