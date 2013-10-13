@@ -6,9 +6,15 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<div id="right-bar">
+	<p>Giảng Viên</p>
+	<hr />
+	<div id="ketqua">
 
-<div class="adminPage">
-		<h1 id="titleFrame">WELLCOME ADMINISTRATOR's PAGE</h1><br>
-		<hr>
-		<h2 id="titleFrame">Đại Học Sư Phạm Kỹ Thuật TP.HCM</h2>
+		<a href="${pageContext.request.contextPath}/admin?qldg">
+			<div class="row">Xem kết quả đánh giá</div>
+		</a>
+
+	</div>
+	<br />
 </div>

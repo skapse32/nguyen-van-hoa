@@ -60,7 +60,7 @@ public class AccountController {
 		
 	}
 
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@RequestMapping(params = "logout", method = RequestMethod.GET)
 	public String handlerLogout(HttpServletRequest request) {
 		request.getSession().invalidate();
 		return "login";

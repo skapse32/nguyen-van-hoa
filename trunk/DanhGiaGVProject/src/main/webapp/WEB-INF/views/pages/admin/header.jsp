@@ -8,8 +8,3 @@
 	src="${pageContext.request.contextPath}/resources/script/jquery-ui-1.10.3.custom.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/styles/adminstyle.css" />
-<script>
-	$(function() {
-		$("#menu").menu();
-	});
-</script>
