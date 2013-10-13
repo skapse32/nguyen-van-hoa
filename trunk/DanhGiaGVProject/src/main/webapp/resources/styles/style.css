@@ -7,18 +7,70 @@
         url('segoeui.eot');
 }
 
-select,.textfield {
-	width: 220px;
+root { 
+    display: block;
+}
+
+.textfield {
+	width: 170px;
 	border: 1px solid #999;
 	border-radius: 5px;
 }
 
+maincontent {
+	background-color:#FFF;
+    height: 400px;
+	width: 910px;
+}
+.inside {
+    width:950px;
+    margin:auto;
+}
+
+.header {
+    height:120px;
+    position:relative;
+}
+
+
+.header a {
+    float:right;
+    padding-top: 55px;
+    padding-right: 150px;
+    color:#113F8C;
+    font-size:20px;
+    text-decoration:none;
+    text-align:right;
+    text-shadow: 0.5px 1px 0px #E9F2F9,
+               1px 1.5px 0px #c9c9c9,
+               1.5px 2px 0px #B2D1E5,
+               2px 2.5px 0px #b9b9b9,
+               2.5px 3px 0px #B2D1E5;
+    font-weight:bold;
+}
+
+.header a span{
+    font-size:12px;
+}
+
+.header a img {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    vertical-align:top;
+    z-index: 2;
+    height: 110px;
+    width: 110px;
+}
+.header span.congthongtin {
+    font-size: 16px;
+}
+
 .title {
 	height: 200px;
-	width: 600px;
+	width: 500px;
 	margin-top: 100px;
 	padding-top: 30px;
-	margin-left: 150px;
 	color: darkblue;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	text-shadow: 5px 5px 5px #999;
@@ -26,7 +78,7 @@ select,.textfield {
 }
 
 .title h1 {
-	font-size: 24px;
+	font-size: 22px;
 	text-align: right;
 }
 
@@ -37,15 +89,13 @@ select,.textfield {
 
 .title img {
 	float: right;
-	height: 100px;
-	width: 100px;
+	height: 80px;
+	width: 80px;
 }
 
 form {
-	width: 250px;
+	width: 200px;
 	padding: 5px;
-	margin-top : 100px;
-	margin-right: 200px;
 	border-radius: 5px;
 	border: 1px solid #999;
 	box-shadow: 5px 5px 5px #999;
@@ -56,7 +106,7 @@ form {
 
 .btn_search {
 	position: relative;
-	right: -120px;
+	right: -70px;
 	width: 100px;
 	height: 30px;
 	border: 1px solid #999;
@@ -64,6 +114,11 @@ form {
 	-moz-border-radius: 5px;
 }
 
+.login{
+	width: 750px;
+	margin: auto;
+	position: relative;
+}
 nav {
     background-color:#3C8DC5;
     height:60px;
@@ -100,7 +155,7 @@ nav {
 
 .nav ul#topnav li{
     float:left;
-    width:14%;
+    width:16%;
     padding:0px;
     height:100%;
 }
@@ -137,8 +192,8 @@ nav {
 .main-content{
     background-clip: content-box;
     border: 8px solid #000; 
-    width: 1300px;
-    margin : 60px auto auto auto;
+    width: 950px;
+    margin : 20px auto auto auto;
     padding: 8px;	
     border: rgba(0,255,255, 0.3);
     -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.8);
@@ -150,7 +205,7 @@ maincontent {
     background-color:#FFF;
     padding:20px;
     display:table;	
-    width: 1250px;
+    width: 910px;
     margin : auto;
 }
 
@@ -159,7 +214,6 @@ body {
 	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
 	font-size: 12px;
 	background-color: #5C5C5C;
-	background-image: url(../giangvien/resources/images/bgcongcuphai.png);
 	/* fallback */
 	background-color: #2F2727;
 	background-image: url(images/radial_bg.png);

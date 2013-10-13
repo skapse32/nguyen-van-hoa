@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-
+<div class="login">
 <form method="post" action='<c:url value="/login" />'>
 	<fieldset>
 		<legend>Login</legend>
@@ -20,4 +20,5 @@
 	<h1>PHẦN MỀM ĐÁNH GIÁ GIẢNG VIÊN</h1>
 	<h2>ĐẠI HỌC SƯ PHẠM KỸ THUẬT TP.HỒ CHÍ MINH</h2>
 
+</div>
 </div>
