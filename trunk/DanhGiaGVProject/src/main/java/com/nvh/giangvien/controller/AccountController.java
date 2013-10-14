@@ -2,6 +2,7 @@ package com.nvh.giangvien.controller;
 
 import javax.naming.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,8 +62,8 @@ public class AccountController {
 	}
 
 	@RequestMapping(params = "logout", method = RequestMethod.GET)
-	public String handlerLogout(HttpServletRequest request) {
-		request.getSession().invalidate();
+	public String handlerLogout(HttpSession session) {
+		session.invalidate();
 		return "login";
 	}
 }
