@@ -1,6 +1,7 @@
 package com.nvh.giangvien.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,11 +9,14 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="BANGDANHGIA")
@@ -22,6 +26,7 @@ public class BangDanhGia implements Serializable {
 	private String tenbang;
 	private Set<BangDanhGiaKq> bangkqs = new HashSet<BangDanhGiaKq>();
 	private Set<CauHoi> cauhois = new HashSet<CauHoi>();
+	private Date ngaytao;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +48,7 @@ public class BangDanhGia implements Serializable {
 		this.tenbang = tenbang;
 	}
 	
-	@OneToMany(mappedBy = "loaiBang" , cascade = CascadeType.ALL , orphanRemoval = true)
+	@OneToMany(mappedBy = "loaiBang" , cascade = CascadeType.ALL , orphanRemoval = true , fetch = FetchType.EAGER)
 	public Set<BangDanhGiaKq> getBangkqs() {
 		return bangkqs;
 	}
@@ -60,5 +65,16 @@ public class BangDanhGia implements Serializable {
 	public void setCauhois(Set<CauHoi> cauhois) {
 		this.cauhois = cauhois;
 	}
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "NGAYTAO")
+	public Date getNgaytao() {
+		return ngaytao;
+	}
 
+	public void setNgaytao(Date ngaytao) {
+		this.ngaytao = ngaytao;
+	}
+
+	
 }

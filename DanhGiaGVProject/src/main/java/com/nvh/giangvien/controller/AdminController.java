@@ -1,7 +1,9 @@
 package com.nvh.giangvien.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.List;
+
 
 
 
@@ -62,6 +64,9 @@ public class AdminController {
 	public String deleteBang(@PathVariable("id") int id, Model model){
 		logger.info("Xoa " + id);
 		BangDanhGia bdg = dgService.findById(id);
+		bdg.getBangkqs().clear();
+		bdg.getCauhois().clear();
+		dgService.delete(bdg);
 		return "redirect:/admin?qldg";
 	}
 	
@@ -83,6 +88,7 @@ public class AdminController {
 		BangDanhGia bgd = new BangDanhGia();
 		logger.info("Save " + tenbang);
 		bgd.setTenbang(tenbang);
+		bgd.setNgaytao(new Date());
 		dgService.save(bgd);
 		return "redirect:/admin?qldg";
 	}
