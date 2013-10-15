@@ -35,7 +35,7 @@ maincontent {
 
 .header a {
     float:right;
-    padding-top: 55px;
+    padding-top: 40px;
     padding-right: 150px;
     color:#113F8C;
     font-size:20px;
@@ -55,7 +55,7 @@ maincontent {
 
 .header a img {
     position: absolute;
-    top: 30px;
+    top: 20px;
     right: 30px;
     vertical-align:top;
     z-index: 2;
@@ -98,9 +98,9 @@ form#frmlogin {
 	padding: 5px;
 	border-radius: 5px;
 	border: 1px solid #999;
-	box-shadow: 5px 5px 5px #999;
+	/* box-shadow: 5px 5px 5px #999;
 	-moz-box-shadow: 5px 5px 5px #999;
-	-webkit-box-shadow: 5px 5px 5px #999;
+	-webkit-box-shadow: 5px 5px 5px #999; */
 	float:right;
 }
 
