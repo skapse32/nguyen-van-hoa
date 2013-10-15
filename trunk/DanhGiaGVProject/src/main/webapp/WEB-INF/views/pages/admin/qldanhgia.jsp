@@ -9,13 +9,13 @@
 <spring:url value="/admin" var="showBangUrl" />
 <script>
 	function deleteFunction(URL) {
-		$.ajax({ 
-			url: URL, 
-			type: 'POST', 
-			success: function(html) { 
+		$.ajax({
+			url : URL,
+			type : 'POST',
+			success : function(html) {
 				alert("Xóa Thành Công");
 				location.reload();
-			} 
+			}
 		});
 	}
 </script>
@@ -24,7 +24,8 @@
 	<a href="${pageContext.request.contextPath}/admin"><img
 		src="${pageContext.request.contextPath}/resources/images/home.png"
 		height="18" width="18" border="0px" /></a> <label> Trang Chủ ></label> <a
-		class="focus" href="${pageContext.request.contextPath}/admin?qldg">Danh	Sách Bảng Đánh Giá</a>
+		class="focus" href="${pageContext.request.contextPath}/admin?qldg">Danh
+		Sách Bảng Đánh Giá</a>
 	<div class="add-course">
 		<a href="${pageContext.request.contextPath}/admin?form"><img
 			alt="Tạo Bảng Đánh Giá" title="Tạo bảng đánh giá." height="24"
@@ -37,7 +38,17 @@
 	<c:if test="${not empty danhsachdg}">
 		<c:forEach var="bang" items="${danhsachdg}">
 			<div id="private">
-				<div id="row">Bảng : ${bang.id}</div>
+				<div id="row"
+					style="color: #113F8C; font-size: 12px; font-weight: bold;">Bảng
+					: ${bang.id}</div>
+				<div >
+					<hr>
+				</div>
+				<div id="row">
+					<img
+						src="${pageContext.request.contextPath}/resources/images/webpage16x16_1.png" />
+					Ngày tạo : ${bang.ngaytao} .
+				</div>
 				<div id="row">
 					<img
 						src="${pageContext.request.contextPath}/resources/images/webpage16x16_1.png" />
@@ -46,7 +57,8 @@
 				<div id="row" align="right">
 					<input class="update${bang.id}" id="button" type="button"
 						value="Sữa" /> <input class="delete${bang.id}" id="button"
-						type="button" value="Xóa" onclick="deleteFunction('${pageContext.request.contextPath}/admin/${bang.id}')"/>
+						type="button" value="Xóa"
+						onclick="deleteFunction('${pageContext.request.contextPath}/admin/${bang.id}')" />
 				</div>
 			</div>
 		</c:forEach>
